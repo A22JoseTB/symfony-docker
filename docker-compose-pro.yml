@@ -16,17 +16,17 @@ services:
     volumes:
       - ./php/entrypoint.sh:/sbin/entrypoint.sh
       - ./symfony:/app/symfony
-      - ./symfony/.env-dev:/app/symfony/.env
+      - ./symfony/.env-pro:/app/symfony/.env
       - ./php/www.conf:/etc/php/8.2/fpm/pool.d/www.conf
-  db:
-    image: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: abc123.
-      MYSQL_DATABASE: database
-      MYSQL_USER: user
-      MYSQL_PASSWORD: passwd
-    volumes:
-      - basedatos:/var/lib/mysql
-      - ./db/db.sql:/docker-entrypoint-initdb.d/backup.sql
-volumes:
-  basedatos:
+#   db:
+#     image: mysql
+#     environment:
+#       MYSQL_ROOT_PASSWORD: abc123.
+#       MYSQL_DATABASE: database
+#       MYSQL_USER: user
+#       MYSQL_PASSWORD: passwd
+#     volumes:
+#       - basedatos:/var/lib/mysql
+#       - ./db/db.sql:/docker-entrypoint-initdb.d/backup.sql
+# volumes:
+#   basedatos:
