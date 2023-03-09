@@ -4,18 +4,18 @@ services:
     build: nginx
     ports:
       - 80:80
-      - 443:443
+      # - 443:443
     volumes:
       - ./symfony:/app/symfony
       - ./nginx/symfony.conf:/etc/nginx/conf.d/symfony.conf
-      - ./nginx/entrypoint.sh:/sbin/entrypoint.sh
       # - ./fullchain.pem:/etc/ssl/certs/fullchain.pem
       # - ./privkey.key:/etc/ssl/private/privkey.key
   php:
     build: php
     volumes:
+      - ./nginx/entrypoint-nginx.sh:/sbin/entrypoint.sh
       - ./symfony:/app/symfony
-      # - ./php/www.conf:/etc/php/8.2/fpm/pool.d/www.conf
+      - ./php/www.conf:/etc/php/8.2/fpm/pool.d/www.conf
   db:
     image: mysql
     environment:
