@@ -8,6 +8,7 @@ services:
     volumes:
       - ./symfony:/app/symfony
       - ./nginx/symfony.conf:/etc/nginx/conf.d/symfony.conf
+      - ./nginx/entrypoint.sh:/sbin/entrypoint.sh
       # - ./fullchain.pem:/etc/ssl/certs/fullchain.pem
       # - ./privkey.key:/etc/ssl/private/privkey.key
   php:

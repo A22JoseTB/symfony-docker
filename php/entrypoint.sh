@@ -5,4 +5,4 @@
 composer update
 composer install
 
-symfony serve --dir /app/sympony
+symfony serve --dir /app/symfony
