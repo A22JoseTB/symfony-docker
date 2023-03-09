@@ -32,4 +32,4 @@ EXPOSE 9000
 RUN mkdir -p /run/php/
 RUN touch /run/php/php8.2-fpm.sock
 
-CMD ["/usr/sbin/php-fpm8.2", "-F"]
+CMD ["/sbin/entrypoint.sh"]
