@@ -4,28 +4,28 @@ services:
     build: nginx
     ports:
       - 80:80
-      # - 443:443
+      - 443:443
     volumes:
       - ./symfony:/app/symfony
       - ./nginx/symfony.conf:/etc/nginx/conf.d/symfony.conf
       - ./nginx/entrypoint.sh:/sbin/entrypoint.sh
-      # - ./fullchain.pem:/etc/ssl/certs/fullchain.pem
-      # - ./privkey.key:/etc/ssl/private/privkey.key
+      - ./nginx/certs/fullchain.pem:/etc/ssl/certs/fullchain.pem
+      - ./nginx/certs/privkey.key:/etc/ssl/private/privkey.key
   php:
     build: php
     volumes:
       - ./php/entrypoint.sh:/sbin/entrypoint.sh
       - ./symfony:/app/symfony
       - ./php/www.conf:/etc/php/8.2/fpm/pool.d/www.conf
-#   db:
-#     image: mysql
-#     environment:
-#       MYSQL_ROOT_PASSWORD: abc123.
-#       MYSQL_DATABASE: database
-#       MYSQL_USER: user
-#       MYSQL_PASSWORD: passwd
-#     volumes:
-#       - basedatos:/var/lib/mysql
-#       - ./db/db.sql:/docker-entrypoint-initdb.d/backup.sql
-# volumes:
-#   basedatos:
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: abc123.
+      MYSQL_DATABASE: database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: passwd
+    volumes:
+      - basedatos:/var/lib/mysql
+      - ./db/db.sql:/docker-entrypoint-initdb.d/backup.sql
+volumes:
+  basedatos:
