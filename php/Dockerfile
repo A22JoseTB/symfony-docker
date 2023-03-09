@@ -10,7 +10,7 @@ RUN sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /
 # RUN curl -sSL https://packages.sury.org/php/README.txt |  bash -x
 RUN apt update && apt install -y php8.2-fpm
 
-RUN apt install -y php8.2-zip php8.2-xml php8.2-curl php8.2-gd php8.2-mysql php8.2-intl php8.2-mbstring
+RUN apt install -y php8.2-zip php8.2-xml php8.2-curl php8.2-gd php8.2-mysql php8.2-intl php8.2-mbstring php8.2-sqlite3
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
